@@ -46,9 +46,8 @@
             background-color: var(--background-color2);
             position: absolute;
             top: 0px;
-            left: 0;
+            left: 0px;
             box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825);
-            display: flex;
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
@@ -63,6 +62,7 @@
             overflow-y: scroll;
             overflow-x: hidden;
             transition: all 0.5s ease-in-out;
+            display: none;
         }
 
         /* Стили для опции "Заседания" */
@@ -71,6 +71,7 @@
             background-color: #1a315e;
             color: white;
             cursor: pointer;
+
         }
 
         /* Эффект при наведении на опцию "Заседания" */
@@ -307,13 +308,31 @@
             margin-top: 75px; /* Отодвигает подвал вниз */
         }
 
+        #nav.open {
+            display: flex;
+        }
+
+        /* Стили для кнопки открытия/закрытия панели */
+        @media (min-width:768px){
+        .toggle-btn{
+                display:none ;
+            }}
+
+        /* Эффект при наведении на кнопку */
+        .toggle-btn:hover {
+            background-color: #3e8bbe; /* Цвет фона при наведении */
+        }
+
         /* Адаптивные стили для мобильных устройств */
         @media (max-width: 768px) {
+            .nav {
+                width: 200px; /* Уменьшаем ширину панели для мобильных */
+            }
+            
             .nav {
                 width: 200px; /* Уменьшаем ширину навигации на мобильных */
                 font-size: 18px;
             }
-
             .searchbar input {
                 width: 150px; /* Уменьшаем ширину поисковой строки */
             }
@@ -329,6 +348,18 @@
             .month-header {
                 flex-direction: column; /* Изменяем направление на мобильных */
                 align-items: flex-start; /* Выравниваем по левому краю */
+            }
+            
+            .toggle-btn {
+                position: absolute; /* Позиционирование кнопки */
+                top: 20px; /* Отступ сверху */
+                left: 20px; /* Отступ слева */
+                background-color: #1a315e; /* Цвет фона кнопки */
+                color: white; /* Цвет текста кнопки */
+                border: none; /* Убираем рамку */
+                padding: 10px; /* Отступы внутри кнопки */
+                cursor: pointer; /* Указатель при наведении */
+                z-index: 1100; /* Выше панели навигации */
             }
         }
 
@@ -347,7 +378,8 @@
     </header>
 
     <div class="main-container">
-        <div class="navcontainer">  
+        <button class="toggle-btn" onclick="toggleNav()">☰</button>
+        <div class="navcontainer" id="nav">  
             <nav class="nav">
                 <div class="nav-upper-options">
                     <div class="nav-option option1">              
@@ -574,10 +606,9 @@
                 nav.classList.toggle('open'); // Переключаем класс 'open'
             }
 
-            // На мобильных устройствах убираем автоматическое открытие по курсору
             document.addEventListener('mousemove', (event) => {
                 if (window.innerWidth > 768) { // Проверяем, что это не мобильное устройство
-                    if (event.clientX < 50) { // Если курсор близко к левому краю
+                    if (event.clientX < 250) { // Если курсор близко к левому краю
                         openNav(); // Открываем панель
                     } else {
                         closeNav(); // Закрываем панель
