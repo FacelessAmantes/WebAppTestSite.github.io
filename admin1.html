@@ -8,11 +8,7 @@
     <link rel="stylesheet" href="style11.css">
     <title>ТСЖ</title>
     <style>
-        /* Основные стили */
-/* Основные стили */
-   
-        
-* {
+ * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -23,14 +19,13 @@
             background-color: white;
             max-width: 100%;
             overflow-x: hidden;
-
         }
 
         header {
             height: 80px;
             width: 100vw;
             padding: 0 30px;
-            background-color:rgb(255, 255, 255);
+            background-color: rgb(255, 255, 255);
             position: fixed;
             z-index: 100;
             box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
@@ -43,285 +38,300 @@
             height: 70px;
             width: 170px;
         }
+
         /* Навигационное меню */
-.nav {
-    min-height: 100%; /* Минимальная высота навигации */
-    width: 250px; /* Ширина навигации */
-    background-color: var(--background-color2); /* Фон навигации */
-    position: absolute; /* Абсолютное позиционирование */
-    top: 0px; /* Сдвиг вверх */
-    left: 0; /* Сдвиг влево */
-    box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825); /* Тень навигации */
-    display: flex; /* Использование flexbox */
-    flex-direction: column; /* Вертикальное расположение элементов */
-    justify-content: space-between; /* Расположение элементов по краям */
-    overflow: hidden; /* Скрытие переполнения */
-    padding: 30px 0 20px 10px; /* Отступы */
-    transition: transform 0.5s ease-in-out; /* Плавный переход */
-}
+        .nav {
+            min-height: 100%;
+            width: 250px;
+            background-color: var(--background-color2);
+            position: absolute;
+            top: 0px;
+            left: 0;
+            box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 30px 0 20px 10px;
+            transition: transform 0.5s ease-in-out;
+        }
 
-/* Контейнер для навигации */
-.navcontainer {
-    width: 250px; /* Фиксированная ширина для навигации */
-    height: calc(100vh - 70px); /* Высота с учетом заголовка */
-    overflow-y: scroll; /* Вертикальная прокрутка */
-    overflow-x: hidden; /* Скрытие горизонтальной прокрутки */
-    transition: all 0.5s ease-in-out; /* Плавный переход */
-}
+        /* Контейнер для навигации */
+        .navcontainer {
+            width: 250px;
+            height: calc(100vh - 70px);
+            overflow-y: scroll;
+            overflow-x: hidden;
+            transition: all 0.5s ease-in-out;
+        }
 
-/* Стили для опции "Заседания" */
-#ecoanalyze {
-    border-left: 5px solid #1a315e; /* Левый бордер */
-    background-color: #1a315e; /* Синий фон */
-    color: white; /* Белый текст */
-    cursor: pointer; /* Указатель при наведении */
-}
-
-/* Эффект при наведении на опцию "Заседания" */
-#ecoanalyze:hover {
-    border-left: 5px solid #6aae95; /* Левый бордер при наведении */
-    background-color: #2a4a8a; /* Более светлый синий фон при наведении */
-}
-
-/* Стили для скрытия полосы прокрутки */
-.navcontainer::-webkit-scrollbar {
-    display: none; /* Скрыть полосу прокрутки */
-}
-
-
-/* Стили для опций навигации */
-.nav-option {
-    width: 250px; /* Ширина опции */
-    height: 60px; /* Высота опции */
-    display: flex; /* Использование flexbox */
-    align-items: center; /* Выравнивание по вертикали */
-    padding: 0 20px; /* Отступы */
-    gap: 20px; /* Промежуток между элементами */
-    transition: all 0.1s ease-in-out; /* Плавный переход */
-}
-
-/* Выравнивание текста в опциях навигации */
-.nav-option h3 {
-    text-align: left; /* Выравнивание текста по левому краю */
-}
-
-/* Эффект при наведении на опции навигации */
-.nav-option:hover {
-    border-left: 5px solidrgb(71, 84, 110); /* Левый бордер при наведении */
-    background-color:rgb(103, 120, 155); /* Фон при наведении */
-    cursor: pointer; /* Указатель при наведении */
-}
-
-/* Размеры иконок в навигации */
-.nav-img {
-    width: 30px; /* Ширина иконок */
-    height: 30px; /* Высота иконок */
-}
-
-/* Стили для ссылок в опциях навигации */
-.nav-option a {
-    text-decoration: none; /* Убираем подчеркивание */
-    color: inherit; /* Установите цвет текста по умолчанию */
-}
-
-/* Верхние опции навигации */
-.nav-upper-options {
-    display: flex; /* Использование flexbox */
-    flex-direction: column; /* Вертикальное расположение элементов */
-    align-items: center; /* Выравнивание по центру */
-    gap: 10px; /* Промежуток между элементами */
-}
-
-/* Кнопка выхода */
-.logout button {
-    display: flex; /* Использование flexbox */
-    align-items: center; /* Выравнивание по вертикали */
-    width: 100%; /* Ширина на всю ширину контейнера */
-    padding: 10px; /* Внутренние отступы */
-    background: none; /* Убираем фон */
-    border: none; /* Убираем границу */
-    cursor: pointer; /* Указатель при наведении */
-    color: rgb(1, 0, 0); /* Цвет текста */
-}
-
-/* Отступ между изображением и текстом в кнопке выхода */
-.logout button img {
-    margin-right: 10px; /* Отступ справа */
-}
-
-/* Стили для первой опции навигации */
-.option1 {
-    border-left: 5px solidrgb(255, 255, 255); /* Левый бордер */
-    background-color:rgb(255, 255, 255); /* Фон */
-    color: black; /* Цвет текста */
-    cursor: pointer; /* Указатель при наведении */
-}
-
-/* Эффект при наведении на первую опцию */
-.option1:hover {
-    border-left: 5px solid #6aae95; /* Левый бордер при наведении */
-    background-color:rgb(30, 65, 135); /* Фон при наведении */
-}
-
-
-.icn {
-    height: 30px;
-}
-
-.menuicn {
-    cursor: pointer;
-}
-
-.searchbar,
-.message,
-.logosec {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.searchbar2 {
-    display: none;
-}
-
-
-.searchbar input {
-    width: 250px;
-    height: 42px;
-    border-radius: 50px 0 0 50px;
-    background-color: var(--background-color3);
-    padding: 0 20px;
-    font-size: 15px;
-    outline: none;
-    border: none;
-}
-
-.searchbtn {
-    width: 50px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0px 50px 50px 0px;
-    background-color: var(--secondary-color);
-    cursor: pointer;
-}
-
-.message {
-    gap: 40px;
-    position: relative;
-    cursor: pointer;
-}
-
-.circle {
-    height: 7px;
-    width: 7px;
-    position: absolute;
-    background-color: #fa7bb4;
-    border-radius: 50%;
-    left: 19px;
-    top: 8px;
-}
-
-.dp {
-    height: 40px;
-    width: 40px;
-    background-color: #626262;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.main-container {
-    display: flex; /* Используем Flexbox для расположения элементов */
-    width: 100vw;
-    position: relative;
-    top: 70px; /* Сдвигаем вниз под header */
-    z-index: 1;
-}
-       
-.navcontainer::-webkit-scrollbar {
-    display: none;
-}
-
-button {
+        /* Стили для опции "Заседания" */
+        #ecoanalyze {
+            border-left: 5px solid #1a315e;
             background-color: #1a315e;
             color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
             cursor: pointer;
         }
 
- .calendar-container {
-    flex: 1; /* Занимает оставшееся пространство */
-    display: flex;
-    flex-direction: column;
-    padding: 50px;
+        /* Эффект при наведении на опцию "Заседания" */
+        #ecoanalyze:hover {
+            border-left: 5px solid #6aae95;
+            background-color: #2a4a8a;
+        }
 
-}
-        #calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; position: relative; }
-        .day { width: 100%; height: 100%; line-height: 100px; text-align: center; border: 1px solid #ccc; cursor: pointer; transition: background-color 0.3s; }
-        .day:hover { background-color: #3e8bbe; }
-        .today { border: 4px solid rgb(194, 23, 23) ; }
-        .kana { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; margin-bottom: 5px; font-size: 18px; }
-        .kana div { padding: 30px 60px;}
-        .month-header { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 10px 20px; }
-        .arrow { cursor: pointer; font-size: 24px; }
-        footer { background-color: #4CAF50; color: white; text-align: center; padding: 10px 20px; position: relative; bottom: 0; width: 100%; }
-        
-        .has-meeting {
-    background-color:#6aae95; /* Светло-красный цвет для дней с заседаниями */
-}
+        /* Стили для скрытия полосы прокрутки */
+        .navcontainer::-webkit-scrollbar {
+            display: none;
+        }
 
-        /* Стили для модального окна */
-        .modal {
-            display: none; /* Скрыто по умолчанию */
-            position: fixed;
+        /* Стили для опций навигации */
+        .nav-option {
+            width: 250px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 20px;
+            transition: all 0.1s ease-in-out;
+        }
+
+        /* Выравнивание текста в опциях навигации */
+        .nav-option h3 {
+            text-align: left;
+        }
+
+        /* Эффект при наведении на опции навигации */
+        .nav-option:hover {
+            border-left: 5px solid rgb(71, 84, 110);
+            background-color: rgb(103, 120, 155);
+            cursor: pointer;
+        }
+
+        /* Размеры иконок в навигации */
+        .nav-img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Стили для ссылок в опциях навигации */
+        .nav-option a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Верхние опции навигации */
+        .nav-upper-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Кнопка выхода */
+        .logout button {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgb(1 , 0, 0); /* Цвет текста */
+        }
+
+        /* Отступ между изображением и текстом в кнопке выхода */
+        .logout button img {
+            margin-right: 10px; /* Отступ справа */
+        }
+
+        /* Стили для первой опции навигации */
+        .option1 {
+            border-left: 5px solid rgb(255, 255, 255); /* Левый бордер */
+            background-color: rgb(255, 255, 255); /* Фон */
+            color: black; /* Цвет текста */
+            cursor: pointer; /* Указатель при наведении */
+        }
+
+        /* Эффект при наведении на первую опцию */
+        .option1:hover {
+            border-left: 5px solid #6aae95; /* Левый бордер при наведении */
+            background-color: rgb(30, 65, 135); /* Фон при наведении */
+        }
+
+        .icn {
+            height: 30px;
+        }
+
+        .menuicn {
+            cursor: pointer;
+        }
+
+        .searchbar,
+        .message,
+        .logosec {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .searchbar2 {
+            display: none;
+        }
+
+        .searchbar input {
+            width: 250px;
+            height: 42px;
+            border-radius: 50px 0 0 50px;
+            background-color: var(--background-color3);
+            padding: 0 20px;
+            font-size: 15px;
+            outline: none;
+            border: none;
+        }
+
+        .searchbtn {
+            width: 50px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0px 50px 50px 0px;
+            background-color: var(--secondary-color);
+            cursor: pointer;
+        }
+
+        .message {
+            gap: 40px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .circle {
+            height: 7px;
+            width: 7px;
+            position: absolute;
+            background-color: #fa7bb4;
+            border-radius: 50%;
+            left: 19px;
+            top: 8px;
+        }
+
+        .dp {
+            height: 40px;
+            width: 40px;
+            background-color: #626262;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .main-container {
+            display: flex; /* Используем Flexbox для расположения элементов */
+            width: 100vw;
+            position: relative;
+            top: 70px; /* Сдвигаем вниз под header */
             z-index: 1;
-            left: 0;
-            top: 0;
+        }
+
+        .calendar-container {
+            flex: 1; /* Занимает оставшееся пространство */
+            display: flex;
+            flex-direction: column;
+            padding: 20px; /* Уменьшаем отступы для мобильных устройств */
+            overflow: auto; /* Добавлено для прокрутки на маленьких экранах */
+        }
+
+        #calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            position: relative;
+            width: 100%; /* Установите ширину в 100% для адаптивности */
+        }
+
+        .day {
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 400px;
+            line-height: 100px;
             text-align: center;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
+            border: 1px solid #ccc;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
+
+        .day:hover {
+            background-color: #3e8bbe;
+        }
+
+        .today {
+            border: 4px solid rgb(194, 23, 23);
+        }
+
+        .kana {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .kana div {
+            padding: 10px; /* Уменьшаем отступы для мобильных устройств */
+        }
+
+        .month-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 20px;
+        }
+
+        .arrow {
+            cursor: pointer;
+            font-size: 24px;
+        }
+
         footer {
             background-color: #1a315e;
             color: white;
             text-align: center;
-            padding: 10px 20px;
+            padding: 20px;
             position: relative;
             bottom: 0;
             width: 100%;
             height: 60px; /* Высота подвала */
             margin-top: 75px; /* Отодвигает подвал вниз */
         }
+
+        /* Адаптивные стили для мобильных устройств */
+        @media (max-width: 768px) {
+            .nav {
+                width: 200px; /* Уменьшаем ширину навигации на мобильных */
+                font-size: 18px;
+            }
+
+            .searchbar input {
+                width: 150px; /* Уменьшаем ширину поисковой строки */
+            }
+
+            .calendar-container {
+                padding: 10px; /* Уменьшаем отступы для мобильных устройств */
+            }
+
+            .day {
+                height: 80px; /* Уменьшаем высоту ячеек календаря */
+            }
+
+            .month-header {
+                flex-direction: column; /* Изменяем направление на мобильных */
+                align-items: flex-start; /* Выравниваем по левому краю */
+            }
+        }
+
 </style>
 <body>
 
@@ -544,6 +554,37 @@ button {
             window.onload = function() {
                 displayCalendar();
             };
+
+
+
+            const nav = document.getElementById('nav');
+
+            // Функция для открытия панели навигации
+            function openNav() {
+                nav.classList.add('open');
+            }
+
+            // Функция для закрытия панели навигации
+            function closeNav() {
+                nav.classList.remove('open');
+            }
+
+            // Обработчик события для кнопки
+            function toggleNav() {
+                nav.classList.toggle('open'); // Переключаем класс 'open'
+            }
+
+            // На мобильных устройствах убираем автоматическое открытие по курсору
+            document.addEventListener('mousemove', (event) => {
+                if (window.innerWidth > 768) { // Проверяем, что это не мобильное устройство
+                    if (event.clientX < 50) { // Если курсор близко к левому краю
+                        openNav(); // Открываем панель
+                    } else {
+                        closeNav(); // Закрываем панель
+                    }
+                }
+            });
+
         </script>
     </body>
     </html>
