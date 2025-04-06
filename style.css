@@ -1,0 +1,212 @@
+/* styles.css */
+
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: white;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+header {
+    height: 100px;
+    width: 100vw;
+    padding: 0 30px;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    z-index: 100;
+    box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.LLogo {
+    height: 90px;
+    width: 200px;
+}
+
+.main-container {
+    display: flex; /* Используем Flexbox для расположения элементов */
+    width: 100vw;
+    position: relative;
+    top: 70px; /* Сдвигаем вниз под header */
+    z-index: 1;
+}
+
+.navcontainer {
+    width: 250px; /* Ширина навигации */
+    background-color: #f0f0f0; /* Цвет фона для навигации */
+    box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825);
+    height: calc(100vh - 70px); /* Высота с учетом заголовка */
+    position: relative; /* Относительное позиционирование */
+    overflow-y: scroll; /* Вертикальная прокрутка */
+    overflow-x: hidden; /* Скрытие горизонтальной прокрутки */
+    transition: all 0.5s ease-in-out; /* Плавный переход */
+}
+
+.navcontainer::-webkit-scrollbar {
+    display: none; /* Скрыть полосу прокрутки */
+}
+
+.nav {
+    min-height: 91vh; /* Минимальная высота навигации */
+    display: flex; /* Использование flexbox */
+    flex-direction: column; /* Вертикальное расположение элементов */
+    justify-content: space-between; /* Расположение элементов по краям */
+    padding: 30px 0 20px 10px; /* Отступы */
+}
+
+/* Стили для опций навигации */
+.nav-option {
+    width: 250px; /* Ширина опции */
+    height: 60px; /* Высота опции */
+    display: flex; /* Использование flexbox */
+    align-items: center; /* Выравнивание по вертикали */
+    padding: 0 20px; /* Отступы */
+    gap: 20px; /* Промежуток между элементами */
+    transition: all 0.1s ease-in-out; /* Плавный переход */
+}
+
+.nav-option h3 {
+    text-align: left; /* Выравнивание текста по левому краю */
+}
+
+.nav-option:hover {
+    border-left: 5px solid #a2a2a2; /* Левый бордер при наведении */
+    background-color: #dadada; /* Фон при наведении */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+.nav-upper-options {
+    display: flex; /* Использование flexbox */
+    flex-direction: column; /* Вертикальное расположение элементов */
+    align-items: center; /* Выравнивание по центру */
+    gap: 30px; /* Промежуток между элементами */
+}
+
+.logout button {
+    display: flex; /* Использование flexbox */
+    align-items: center; /* Выравнивание по вертикали */
+    width: 100%; /* Ширина на всю ширину контейнера */
+    padding: 10px; /* Внутренние отступы */
+    background: none; /* Убираем фон */
+    border: none; /* Убираем границу */
+    cursor: pointer; /* Указатель при наведении */
+    color: rgb(1, 0, 0); /* Цвет текста */
+}
+
+.option1 {
+    border-left: 5px solid #6aae95; /* Левый бордер */
+    background-color: #6aae95; /* Фон */
+    color: white; /* Цвет текста */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+
+    .option1:hover {
+        border-left: 5px solid #6aae95; /* Левый бордер при наведении */
+        background-color: #5a9c7d; /* Более темный фон при наведении */
+    }
+    
+    .calendar-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: calc(100% - 250px); /* Ширина календаря с учётом ширины навигации */
+        max-width: 800px;
+        margin: 20px; /* Отступы вокруг календаря */
+    }
+    
+    #calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+        position: relative;
+    }
+    
+    .day {
+        width: 120px;
+        height: 120px;
+        line-height: 100px;
+        text-align: center;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .day:hover {
+        background-color: #3e8bbe; /* Цвет фона при наведении на день */
+    }
+    
+    .today {
+        background-color: #90ee90; /* Цвет фона для текущего дня */
+    }
+    
+    /* Стили для модального окна */
+    .modal {
+        display: none; /* Скрыто по умолчанию */
+        position: fixed; /* Фиксированное позиционирование */
+        z-index: 1000; /* Поверх всех элементов */
+        left: 0;
+        top: 0;
+        width: 100%; /* На всю ширину */
+        height: 100%; /* На всю высоту */
+        overflow: auto; /* Прокрутка */
+        background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный фон */
+    }
+    
+    .modal-content {
+        background-color: #fefefe; /* Цвет фона модального окна */
+        margin: 15% auto; /* Центрирование */
+        padding: 20px; /* Отступы */
+        border: 1px solid #888; /* Граница */
+        width: 80%; /* Ширина окна */
+    }
+    
+    .close {
+        color: #aaa; /* Цвет кнопки закрытия */
+        float: right; /* Выравнивание по правому краю */
+        font-size: 28px; /* Размер шрифта */
+        font-weight: bold; /* Жирный шрифт */
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: black; /* Цвет при наведении */
+        text-decoration: none; /* Убираем подчеркивание */
+        cursor: pointer; /* Указатель при наведении */
+    }
+    
+    /* Дополнительные стили для адаптивности */
+    @media (max-width: 768px) {
+        .navcontainer {
+            width: 200px; /* Уменьшаем ширину навигации на маленьких экранах */
+        }
+    
+        .calendar-container {
+            width: calc(100% - 200px); /* Уменьшаем ширину календаря */
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .navcontainer {
+            width: 100%; /* Ширина навигации на полный экран */
+            height: auto; /* Авто высота */
+        }
+    
+        .calendar-container {
+            width: 100%; /* Ширина календаря на полный экран */
+        }
+    
+        header {
+            flex-direction: column; /* Вертикальное расположение элементов в заголовке */
+        }
+    }
+    
