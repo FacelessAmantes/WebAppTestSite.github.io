@@ -1,11 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="styles112542.css">
+    <title>ТСЖ</title>
+    <style>
+        /* Основные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-image: url('veter.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        header {
+            height: 80px;
+            width: 100vw;
+            padding: 0 30px;
+            background-color: rgb(255, 255, 255);
+            position: fixed;
+            z-index: 100;
+            box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .LLogo {
+            height: 70px;
+            width: 170px;
+        }
+
+        .main-container {
+            display: flex
+;
+    width: 100vw;
+    position: relative;
+    top: 70px;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 70px);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            color: black;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .button {
+            background-color: rgb(40, 71, 133);
+            padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 25px;
+    margin: 0 10px;
+    color: #f0f0f0;
+        }
+
+        .button:hover {
+            background-color: rgb(30, 50, 100);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #1a315e;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            margin-top: 10px;
+        }
+
+        /* Стили для полей ввода */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            transition: border-color 0.3s;
+            background-color: #f0f0f0; /* Светлый фон для неактивных полей */
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border-color: rgb(40, 71, 133);
+            outline: none;
+        }
+
+        input[type="text"]:disabled,
+        input[type="email"]:disabled,
+        input[type="password"]:disabled {
+            background-color: #e0e0e0; /* Более светлый фон для неактивных полей */
+            cursor: not-allowed; /* Указатель, показывающий, что поле неактивно */
+        }
+    </style>
 </head>
+
 <body>
-    <p>Hello, World!</p>
+
+<header>
+    <img src="1540771.png" class="LLogo">
+</header>
+
+<div class="main-container">
+    <button class="button login-button" onclick="document.getElementById('loginModal').style.display='block'">Войти</button>
+    <button class="button register-button" onclick="document.getElementById('registrationModal').style.display='block'">Зарегистрироваться</button>
+</div>
+
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="document.getElementById('loginModal').style.display='none'">&times;</span>
+        <h2>Вход</h2>
+        <input type="text" placeholder="Логин" disabled>
+        <input type="password" placeholder="Пароль" disabled>
+        <button class="button" onclick="window.location.href='index1.html';">Войти</button> <!-- Переход на страницу индекс1 -->
+    </div>
+</div>
+
+<div id="registrationModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="document.getElementById('registrationModal').style.display='none'">&times;</span>
+        <h2>Регистрация</h2>
+        <input type="text" placeholder="Имя" disabled>
+        <input type="email" placeholder="Электронная почта" disabled>
+        <input type="password" placeholder="Пароль" disabled>
+        <button class="button" onclick="window.location.href='index1.html';">Зарегистрироваться</button> <!-- Переход на страницу индекс1 -->
+    </div>
+</div>
+
+<footer>
+    <p>© 2023 ТСЖ. Все права защищены.</p>
+</footer>
+
+<script>
+    // Закрытие модального окна при клике вне его
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('loginModal')) {
+            document.getElementById('loginModal').style.display = "none";
+        }
+        if (event.target == document.getElementById('registrationModal')) {
+            document.getElementById('registrationModal').style.display = "none";
+        }
+    }
+</script>
+
 </body>
 </html>
+

@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТНС Энерго - Опросы</title>
+    <style>
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background-color: white;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        header {
+            height: 80px;
+            width: 100vw;
+            padding: 0 30px;
+            background-color:rgb(255, 255, 255);
+            position: fixed;
+            z-index: 100;
+            box-shadow: 1px 1px 15px rgba(161, 182, 253, 0.825);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .LLogo {
+            height: 70px;
+            width: 170px;
+        }
+        
+    
+        .nav {
+            min-height: 91vh;
+            width: 250px;
+            background-color: var(--background-color2);
+            position: absolute;
+            top: 0px;
+            left: 0;
+            box-shadow: 1px 1px 10px rgba(198, 189, 248, 0.825);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 30px 0 20px 10px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .navcontainer {
+            width: 250px;
+            height: calc(100vh - 70px);
+            overflow-y: scroll;
+            overflow-x: hidden;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .navcontainer::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-option {
+            width: 250px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 20px;
+            transition: all 0.1s ease-in-out;
+        }
+
+        .nav-option h3 {
+            text-align: left;
+        }
+
+        .nav-option:hover {
+            border-left: 5px solid #a2a2a2;
+            background-color: #dadada;
+            cursor: pointer;
+        }
+
+
+
+        .nav-img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .nav-option a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-upper-options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logout button {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgb(1, 0, 0);
+        }
+
+        .logout button img {
+            margin-right: 10px;
+        }
+
+        .option1 {
+            border-left: 5px solidrgb(255, 255, 255);
+            background-color:rgb(255, 255, 255);
+            color: black;
+            cursor: pointer;
+        }
+
+        .option1:hover {
+            border-left: 5px solid #6aae95;
+            background-color:rgb(30, 65, 135);
+        }
+
+        .icn {
+            height: 30px;
+        }
+
+        .menuicn {
+            cursor: pointer;
+        }
+
+        .searchbar,
+        .message,
+        .logosec {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .searchbar2 {
+            display: none;
+        }
+
+        .searchbar input {
+            width: 250px;
+            height: 42px;
+            border-radius: 50px 0 0 50px;
+            background-color: var(--background-color3);
+            padding: 0 20px;
+            font-size: 15px;
+            outline: none;
+            border: none;
+        }
+
+        .searchbtn {
+            width: 50px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0px 50px 50px 0px;
+            background-color: var(--secondary-color);
+            cursor: pointer;
+        }
+
+/* Добавляем этот стиль в раздел стилей */
+.nav-option.option5 {
+        border-left: 5px solid #6aae95;
+        background-color: #1a315e;
+        color: white;
+    }
+    
+    .nav-option.option5:hover {
+        border-left: 5px solid #1a315e;
+        background-color: #1a315e;
+    }
+
+        .message {
+            gap: 40px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .circle {
+            height: 7px;
+            width: 7px;
+            position: absolute;
+            background-color: #fa7bb4;
+            border-radius: 50%;
+            left: 19px;
+            top: 8px;
+        }
+
+        .dp {
+            height: 40px;
+            width: 40px;
+            background-color: #626262;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .main-container {
+            display: flex;
+            width: 100vw;
+            position: relative;
+            top: 70px;
+            z-index: 1;
+        }
+       
+        .dashboard {
+            flex: 1;
+            padding: 20px;
+            margin-left: 25px;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .has-meeting {
+            background-color:#6aae95;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Стили для документов */
+        .document-container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .document-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        .document-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .document-content {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .document-footer {
+            display: flex;
+            justify-content: space-between;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+        
+        .document-number {
+            font-weight: bold;
+        }
+        
+        .document-author {
+            color: #333;
+        }
+        
+        .document-time {
+            color: #999;
+        }
+
+        /* Стили для кнопки создания голосования */
+        .create-poll-btn {
+            background-color: #1a315e;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .create-poll-btn:hover {
+            background-color: #2a4a8a;
+        }
+
+        .create-poll-btn i {
+            font-size: 18px;
+        }
+
+        .poll-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 20px 20px 20px;
+        }
+
+        .poll-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 101;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #1a315e;
+            color: white;
+            border: none;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+        }
+
+        /* Стили для окна голосования */
+        .vote-options {
+            margin-top: 15px;
+        }
+
+        .vote-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            background-color: #f5f5f5;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .vote-option:hover {
+            background-color: #e0e0e0;
+        }
+
+        .vote-option.selected {
+            background-color: #d4e6ff;
+            border-left: 4px solid #1a315e;
+        }
+
+        .vote-option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .vote-btn {
+            margin-top: 15px;
+            padding: 8px 16px;
+            background-color: #1a315e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .vote-btn:hover {
+            background-color: #2a4a8a;
+        }
+
+        .vote-results {
+            margin-top: 15px;
+            display: none;
+        }
+
+        .result-bar {
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .result-fill {
+            height: 100%;
+            background-color: #1a315e;
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+
+        .result-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        /* Стили для таймера */
+        .timer-container {
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .timer {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1a315e;
+        }
+        
+        .timer-expired {
+            color: #d9534f;
+        }
+        
+        .timer-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .poll-status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .status-active {
+            background-color: #5cb85c;
+            color: white;
+        }
+        
+        .status-ended {
+            background-color: #d9534f;
+            color: white;
+        }
+        
+        /* Стили для описания опроса */
+        .poll-description {
+            display: none; /* Скрываем описание в списке */
+        }
+        
+        .vote-description {
+            display: block; /* Показываем описание при голосовании */
+            color: #666;
+            font-size: 14px;
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            line-height: 1.6;
+        }
+        
+        /* Стили для протокола */
+        #protocolModal .modal-content {
+            max-height: 80vh; /* Ограничиваем высоту */
+            overflow-y: auto; /* Включаем вертикальную прокрутку */
+            display: flex;
+            flex-direction: column;
+        }
+
+        #protocolContent {
+            overflow-y: visible; /* Позволяем контенту прокручиваться */
+        }
+
+        .protocol-container {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.3;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            margin-top: 50px;
+        }
+        
+        .protocol-title {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .protocol-section {
+            margin-bottom: 15px;
+        }
+        
+        .protocol-section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .protocol-text {
+            margin-bottom: 10px;
+            text-indent: 20px;
+        }
+        
+        .protocol-signature {
+            margin-top: 100px;
+            text-align: right;
+        }
+        
+        .protocol-signature-line {
+            display: inline-block;
+            width: 300px;
+            border-bottom: 1px solid #000;
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        .protocol-signature-name {
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            font-size: 12pt;
+            font-style: italic;
+        }
+        
+        .protocol-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .protocol-btn {
+            padding: 10px 20px;
+            background-color: #1a315e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .protocol-btn:hover {
+            background-color: #2a4a8a;
+        }
+    </style>
+    <!-- Подключаем иконки Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Подключаем библиотеку для генерации PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <img src="1540771.png" class="LLogo">
+        <div class="message">
+            <div class="circle"></div>
+            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png" class="icn" alt="">
+            <div class="dp">
+                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180014/profile-removebg-preview.png" class="dpicn" alt="dp">
+            </div>
+        </div>
+    </header>
+    <div class="main-container">
+        <div class="navcontainer">  
+            <nav class="nav">
+                <div class="nav-upper-options">
+                    <div class="nav-option option1">              
+                        <h3><a href="index1.html">Главная</a></h3>
+                    </div>
+                    <div class="nav-option option2" id="ecoanalyze">
+                        <h3><a href="admin1.html">Заседания</a></h3>
+                    </div>
+                    <div class="nav-option option5">
+                        <h3><a href="admin2.html">Опросы</a></h3>
+                    </div>
+                    <div class="nav-option logout">
+                        <form action="logout.php" method="post">
+                            <button type="submit" style="background: none; border: none; cursor: pointer; display: flex; align-items: center; width: 100%;">
+                                <h3 style="margin-left: 10px;">Выход</h3>
+                            </button>
+            </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="dashboard">
+            <div class="poll-header">
+                <div class="poll-title">Опросы</div>
+                <button class="create-poll-btn" onclick="openPollModal()">
+                    <i class="fas fa-plus"></i> Создать голосование
+                </button>
+            </div>
+
+            <div id="polls-container">
+                <!-- Примеры опросов с описаниями -->
+                <div class="document-container" onclick="openVoteModal(this, 
+                    'Внедрение системы <<умный дом>> для учета электроэнергии', 
+                    'Правление ТНС Энерго',
+                    'Предлагается установка интеллектуальных счетчиков электроэнергии с возможностью дистанционного снятия показаний и автоматической передачей данных. Стоимость оборудования и монтажа — 500 000 руб., ежемесячное обслуживание — 10 000 руб.')">
+                    <div class="document-content">
+                    1. Внедрение системы "умный дом" для учета электроэнергии
+                    </div>
+                    <div class="poll-description">
+                    Предлагается установка интеллектуальных счетчиков электроэнергии с возможностью дистанционного снятия показаний и автоматической передачей данных. Стоимость оборудования и монтажа — 500 000 руб., ежемесячное обслуживание — 10 000 руб.
+                    </div>
+                    <div class="document-footer">
+                        <div class="document-author">Правление ТНС Энерго</div>
+                        <div class="document-status">
+                            <span class="poll-status status-active">активно</span>
+                            <span class="document-time" id="timer-1">(осталось: неограниченно)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="document-container" onclick="openVoteModal(this, 
+                    'Переход на двухтарифный учет электроэнергии', 
+                    'Правление ТНС Энерго',
+                    'Обсуждение перевода дома на двухтарифную систему (день/ночь). Ночной тариф дешевле на 30%, но требует замены счетчиков. Стоимость замены — 200 000 руб. для всех квартир.')">
+                    <div class="document-content">
+                    2. Переход на двухтарифный учет электроэнергии
+                    </div>
+                    <div class="poll-description">
+                    Обсуждение перевода дома на двухтарифную систему (день/ночь). Ночной тариф дешевле на 30%, но требует замены счетчиков. Стоимость замены — 200 000 руб. для всех квартир.
+                    </div>
+                    <div class="document-footer">
+                        <div>
+                            <span class="document-author">Правление ТНС Энерго</span>
+                        </div>
+                        <div class="document-status">
+                            <span class="poll-status status-ended">завершено</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="document-container" onclick="openVoteModal(this, 
+                    'Установка зарядных станций для электромобилей', 
+                    'Правление ТНС Энерго',
+                    'Размещение двух зарядных станций во дворе. Стоимость оборудования — 600 000 руб., тариф для пользователей — 15 руб./кВт·ч.')">
+                    <div class="document-content">
+                        3. Установка зарядных станций для электромобилей
+                    </div>
+                    <div class="poll-description">
+                    Размещение двух зарядных станций во дворе. Стоимость оборудования — 600 000 руб., тариф для пользователей — 15 руб./кВт·ч.
+                    </div>
+                    <div class="document-footer">
+                        <div class="document-author">Правление ТНС Энерго</div>
+                        <div>
+                            <span class="poll-status status-ended">завершено</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для создания нового вопроса -->
+    <div id="pollModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Создать новый опрос</div>
+                <span class="close" onclick="closePollModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="pollQuestion">Тема вопроса:</label>
+                    <textarea id="pollQuestion" placeholder="Введите тему вопроса"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="pollDescription">Описание:</label>
+                    <textarea id="pollDescription" placeholder="Подробное описание вопроса для голосования"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="pollAuthor">Автор:</label>
+                    <input type="text" id="pollAuthor" placeholder="Введите ваше имя">
+                </div>
+                <div class="form-group">
+                    <label for="pollMinutes">Длительность голосования (минуты, 0 - без ограничения):</label>
+                    <input type="number" id="pollMinutes" min="0" placeholder="Минуты (0 - без ограничения)" value="0">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closePollModal()">Отмена</button>
+                <button class="btn btn-primary" onclick="createNewPoll()">Создать</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для голосования -->
+    <div id="voteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="voteModalTitle">Голосование</div>
+                <span class="close" onclick="closeVoteModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="voteQuestion"></div>
+                <div id="voteDescription" class="vote-description"></div>
+                
+                <div class="timer-container" id="timerContainer">
+                    <div class="timer-label">До окончания голосования:</div>
+                    <div class="timer" id="voteTimer">неограниченно</div>
+                </div>
+                
+                <div id="voteForm">
+                    <div class="vote-options">
+                        <label class="vote-option">
+                            <input type="radio" name="voteOption" value="За"> За
+                        </label>
+                        <label class="vote-option">
+                            <input type="radio" name="voteOption" value="Против"> Против
+                        </label>
+                        <label class="vote-option">
+                            <input type="radio" name="voteOption" value="Воздержался"> Воздержался
+                        </label>
+                    </div>
+                    <button class="vote-btn" onclick="submitVote()">Проголосовать</button>
+                </div>
+                
+                <div id="voteResults" class="vote-results">
+                    <h4>Результаты голосования:</h4>
+                    <div class="result-item">
+                        <div class="result-label">
+                            <span>За</span>
+                            <span id="yesPercent">0%</span>
+                        </div>
+                        <div class="result-bar">
+                            <div class="result-fill" id="yesBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">
+                            <span>Против</span>
+                            <span id="noPercent">0%</span>
+                        </div>
+                        <div class="result-bar">
+                            <div class="result-fill" id="noBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-label">
+                            <span>Воздержался</span>
+                            <span id="abstainPercent">0%</span>
+                        </div>
+                        <div class="result-bar">
+                            <div class="result-fill" id="abstainBar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="document-footer" style="margin-top: 15px;">
+                        <div class="document-author" id="resultsAuthor"></div>
+                        <div class="document-status">Всего голосов: <span id="totalVotes">0</span></div>
+                    </div>
+                    <button class="protocol-btn" onclick="generateProtocol()" style="margin-top: 20px;">
+                        <i class="fas fa-file-alt"></i> Создать протокол
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для просмотра протокола -->
+    <div id="protocolModal" class="modal">
+        <div class="modal-content" style="width: 80%; max-width: 800px;">
+            <div class="modal-header">
+                <div class="modal-title">Протокол голосования</div>
+                <span class="close" onclick="closeProtocolModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="protocolContent" class="protocol-container">
+                    <!-- Протокол будет сгенерирован здесь -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeProtocolModal()">Закрыть</button>
+                <button class="btn btn-primary" onclick="downloadProtocol()">
+                    <i class="fas fa-download"></i> Скачать PDF
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Текущий выбранный опрос
+        let currentPoll = null;
+        let currentProtocolData = null;
+        
+        // Данные голосований
+        const votesData = {};
+        
+        // Таймеры для опросов
+        const pollTimers = {};
+        
+        // Инициализация данных для существующих опросов
+        function initPollData() {
+            const polls = document.querySelectorAll('.document-container');
+            polls.forEach((poll, index) => {
+                const question = poll.querySelector('.document-content').textContent.replace(/^\d+\.\s/, '');
+                const author = poll.querySelector('.document-author').textContent;
+                const description = poll.querySelector('.poll-description').textContent;
+                const pollId = index + 1;
+                const statusElement = poll.querySelector('.poll-status');
+                const isActive = statusElement.classList.contains('status-active');
+                
+                if (!votesData[question]) {
+                    votesData[question] = {
+                        yes: Math.floor(Math.random() * 20),
+                        no: Math.floor(Math.random() * 15),
+                        abstain: Math.floor(Math.random() * 10),
+                        author: author,
+                        description: description,
+                        voted: false,
+                        endTime: null,
+                        pollId: pollId,
+                        hasVoted: localStorage.getItem(`poll_${pollId}_voted`) === 'true',
+                        isActive: isActive,
+                        unlimitedTime: pollId === 1 // Первый опрос без ограничения времени
+                    };
+                    
+                    // Устанавливаем время окончания для активных опросов с ограничением времени
+                    if (isActive && !votesData[question].unlimitedTime) {
+                        const minutes = pollId === 2 ? 30 : 60; // Для демонстрации разные таймеры
+                        votesData[question].endTime = new Date();
+                        votesData[question].endTime.setMinutes(votesData[question].endTime.getMinutes() + minutes);
+                        
+                        // Проверяем, не истекло ли уже время
+                        if (new Date() > votesData[question].endTime) {
+                            // Время истекло - меняем статус
+                            statusElement.classList.remove('status-active');
+                            statusElement.classList.add('status-ended');
+                            statusElement.textContent = 'завершено';
+                            const timerElement = poll.querySelector('.document-time');
+                            if (timerElement) {
+                                timerElement.textContent = '';
+                            }
+                            votesData[question].isActive = false;
+                        } else {
+                            // Запускаем таймер для этого опроса
+                            startPollTimer(question);
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Запуск таймера для опроса
+        function startPollTimer(question) {
+            const pollData = votesData[question];
+            const pollId = pollData.pollId;
+            const pollElement = document.querySelectorAll('.document-container')[pollId - 1];
+            const statusElement = pollElement.querySelector('.poll-status');
+            const timerElement = pollElement.querySelector('.document-time');
+            
+            // Останавливаем предыдущий таймер, если он был
+            if (pollTimers[question]) {
+                clearInterval(pollTimers[question]);
+            }
+            
+            // Если время не ограничено, не запускаем таймер
+            if (pollData.unlimitedTime) {
+                if (timerElement) {
+                    timerElement.textContent = '(осталось: неограниченно)';
+                }
+                return;
+            }
+            
+            // Обновляем таймер каждую секунду
+            pollTimers[question] = setInterval(() => {
+                const now = new Date();
+                const timeLeft = pollData.endTime - now;
+                
+                if (timeLeft <= 0) {
+                    // Время вышло
+                    clearInterval(pollTimers[question]);
+                    
+                    // Обновляем статус опроса
+                    statusElement.classList.remove('status-active');
+                    statusElement.classList.add('status-ended');
+                    statusElement.textContent = 'завершено';
+                    if (timerElement) {
+                        timerElement.textContent = '';
+                    }
+                    pollData.isActive = false;
+                    
+                    // Если это текущий открытый опрос, обновляем его таймер
+                    if (currentPoll && currentPoll.question === question) {
+                        document.getElementById('voteTimer').textContent = 'Голосование завершено';
+                        document.getElementById('voteTimer').classList.add('timer-expired');
+                        
+                        // Показываем результаты, если форма голосования открыта
+                        if (document.getElementById('voteForm').style.display !== 'none') {
+                            showResults(question, currentPoll.author);
+                        }
+                    }
+                    
+                    return;
+                }
+                
+                // Рассчитываем оставшееся время
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                // Форматируем строку времени
+                const timeString = `${minutes}м ${seconds}с`;
+                
+                // Обновляем таймер в списке опросов
+                if (timerElement) {
+                    timerElement.textContent = `(осталось: ${timeString})`;
+                }
+                
+                // Обновляем таймер в модальном окне, если это текущий опрос
+                if (currentPoll && currentPoll.question === question) {
+                    document.getElementById('voteTimer').textContent = timeString;
+                }
+                
+            }, 1000);
+        }
+        
+        // Вызываем инициализацию при загрузке
+        document.addEventListener('DOMContentLoaded', initPollData);
+
+        // Открытие модального окна для создания опроса
+        function openPollModal() {
+            document.getElementById('pollModal').style.display = 'block';
+        }
+
+        // Закрытие модального окна создания
+        function closePollModal() {
+            document.getElementById('pollModal').style.display = 'none';
+            document.getElementById('pollQuestion').value = '';
+            document.getElementById('pollDescription').value = '';
+            document.getElementById('pollAuthor').value = '';
+            document.getElementById('pollMinutes').value = '0';
+        }
+
+        // Создание нового опроса
+        function createNewPoll() {
+            const question = document.getElementById('pollQuestion').value.trim();
+            const description = document.getElementById('pollDescription').value.trim();
+            const author = document.getElementById('pollAuthor').value.trim();
+            const minutes = parseInt(document.getElementById('pollMinutes').value) || 0;
+            
+            if (!question || !author || !description) {
+                alert('Пожалуйста, заполните все обязательные поля');
+                return;
+            }
+
+            const pollsContainer = document.getElementById('polls-container');
+            const newPollNumber = pollsContainer.children.length + 1;
+            
+            const newPoll = document.createElement('div');
+            newPoll.className = 'document-container';
+            
+            const unlimited = minutes <= 0;
+            const timeText = unlimited ? 'неограниченно' : `${minutes}м 00с`;
+            
+            newPoll.innerHTML = `
+                <div class="document-content">
+                    ${newPollNumber}. ${question}
+                </div>
+                <div class="poll-description">
+                    ${description}
+                </div>
+                <div class="document-footer">
+                    <div class="document-author">${author}</div>
+                    <div class="document-status">
+                        <span class="poll-status status-active">активно</span>
+                        <span class="document-time" id="timer-${newPollNumber}">(осталось: ${timeText})</span>
+                    </div>
+                </div>
+            `;
+            
+            // Добавляем обработчик клика
+            newPoll.addEventListener('click', function() {
+                openVoteModal(this, question, author, description);
+            });
+            
+            pollsContainer.insertBefore(newPoll, pollsContainer.firstChild);
+            
+            // Устанавливаем время окончания голосования (если не без ограничения)
+            let endTime = null;
+            if (!unlimited) {
+                endTime = new Date();
+                endTime.setMinutes(endTime.getMinutes() + minutes);
+            }
+            
+            // Добавляем данные для голосования
+            votesData[question] = {
+                yes: 0,
+                no: 0,
+                abstain: 0,
+                author: author,
+                description: description,
+                voted: false,
+                endTime: endTime,
+                pollId: newPollNumber,
+                hasVoted: false,
+                isActive: true,
+                unlimitedTime: unlimited
+            };
+            
+            // Запускаем таймер для нового опроса (если не без ограничения)
+            if (!unlimited) {
+                startPollTimer(question);
+            }
+            
+            closePollModal();
+        }
+
+        // Открытие модального окна для голосования
+        function openVoteModal(element, question, author, description) {
+            const pollData = votesData[question];
+            
+            currentPoll = {
+                element: element,
+                question: question,
+                author: author,
+                description: description
+            };
+            
+            document.getElementById('voteModalTitle').textContent = pollData.isActive ? 'Голосование' : 'Результаты голосования';
+            document.getElementById('voteQuestion').innerHTML = `<p><strong>${question}</strong></p>`;
+            document.getElementById('voteDescription').textContent = description;
+            document.getElementById('resultsAuthor').textContent = author;
+            
+            // Настраиваем отображение таймера
+            const timerContainer = document.getElementById('timerContainer');
+            const timerElement = document.getElementById('voteTimer');
+            
+            if (pollData.unlimitedTime) {
+                timerElement.textContent = 'неограниченно';
+                timerElement.classList.remove('timer-expired');
+            } else if (pollData.endTime) {
+                const now = new Date();
+                const timeLeft = pollData.endTime - now;
+                
+                if (timeLeft <= 0) {
+                    timerElement.textContent = 'Голосование завершено';
+                    timerElement.classList.add('timer-expired');
+                } else {
+                    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                    timerElement.textContent = `${minutes}м ${seconds}с`;
+                    timerElement.classList.remove('timer-expired');
+                }
+            } else {
+                timerElement.textContent = 'неограниченно';
+                timerElement.classList.remove('timer-expired');
+            }
+            
+            // Проверяем, голосовал ли уже пользователь или голосование завершено
+            if (pollData.hasVoted || !pollData.isActive) {
+                // Пользователь уже голосовал или голосование завершено - показываем результаты
+                document.getElementById('voteForm').style.display = 'none';
+                document.getElementById('voteResults').style.display = 'block';
+            } else {
+                // Пользователь еще не голосовал - показываем форму
+                document.getElementById('voteForm').style.display = 'block';
+                document.getElementById('voteResults').style.display = 'none';
+                
+                // Сбрасываем выбор
+                const options = document.querySelectorAll('input[name="voteOption"]');
+                options.forEach(option => {
+                    option.checked = false;
+                    option.disabled = false;
+                });
+            }
+            
+            document.getElementById('voteModal').style.display = 'block';
+            updateResults(question);
+        }
+
+        // Закрытие модального окна голосования
+        function closeVoteModal() {
+            document.getElementById('voteModal').style.display = 'none';
+            currentPoll = null;
+        }
+
+        // Открытие модального окна протокола
+        function openProtocolModal() {
+            document.getElementById('protocolModal').style.display = 'block';
+        }
+
+        // Закрытие модального окна протокола
+        function closeProtocolModal() {
+            document.getElementById('protocolModal').style.display = 'none';
+        }
+
+        // Отправка голоса
+        function submitVote() {
+            const selectedOption = document.querySelector('input[name="voteOption"]:checked');
+            
+            if (!selectedOption) {
+                alert('Пожалуйста, выберите вариант голосования');
+                return;
+            }
+            
+            const voteValue = selectedOption.value;
+            const question = currentPoll.question;
+            const pollData = votesData[question];
+            
+            // Проверяем, не завершено ли голосование (если оно с ограничением времени)
+            if (!pollData.unlimitedTime && !pollData.isActive) {
+                alert('Голосование уже завершено');
+                showResults(question, currentPoll.author);
+                return;
+            }
+            
+            // Проверяем, не голосовал ли уже пользователь
+            if (pollData.hasVoted) {
+                alert('Вы уже проголосовали в этом опросе');
+                showResults(question, currentPoll.author);
+                return;
+            }
+            
+            // Обновляем данные голосования
+            if (voteValue === 'За') {
+                pollData.yes++;
+            } else if (voteValue === 'Против') {
+                pollData.no++;
+            } else if (voteValue === 'Воздержался') {
+                pollData.abstain++;
+            }
+            
+            // Помечаем, что пользователь уже проголосовал
+            pollData.hasVoted = true;
+            pollData.voted = true;
+            
+            // Сохраняем информацию о голосовании в localStorage
+            localStorage.setItem(`poll_${pollData.pollId}_voted`, 'true');
+            
+            // Блокируем радиокнопки
+            const options = document.querySelectorAll('input[name="voteOption"]');
+            options.forEach(option => {
+                option.disabled = true;
+            });
+            
+            showResults(question, currentPoll.author);
+        }
+
+        // Показать результаты голосования
+        function showResults(question, author) {
+            document.getElementById('voteModalTitle').textContent = 'Результаты голосования';
+            document.getElementById('voteQuestion').innerHTML = `<p><strong>${question}</strong></p>`;
+            document.getElementById('voteDescription').textContent = votesData[question].description;
+            document.getElementById('resultsAuthor').textContent = author;
+            
+            document.getElementById('voteForm').style.display = 'none';
+            document.getElementById('voteResults').style.display = 'block';
+            
+            updateResults(question);
+            document.getElementById('voteModal').style.display = 'block';
+        }
+
+        // Обновить отображение результатов
+        function updateResults(question) {
+            const data = votesData[question];
+            const total = data.yes + data.no + data.abstain;
+            
+            if (total > 0) {
+                const yesPercent = Math.round((data.yes / total) * 100);
+                const noPercent = Math.round((data.no / total) * 100);
+                const abstainPercent = Math.round((data.abstain / total) * 100);
+                
+                document.getElementById('yesPercent').textContent = `${yesPercent}% (${data.yes})`;
+                document.getElementById('noPercent').textContent = `${noPercent}% (${data.no})`;
+                document.getElementById('abstainPercent').textContent = `${abstainPercent}% (${data.abstain})`;
+                
+                document.getElementById('yesBar').style.width = `${yesPercent}%`;
+                document.getElementById('noBar').style.width = `${noPercent}%`;
+                document.getElementById('abstainBar').style.width = `${abstainPercent}%`;
+            } else {
+                document.getElementById('yesPercent').textContent = '0% (0)';
+                document.getElementById('noPercent').textContent = '0% (0)';
+                document.getElementById('abstainPercent').textContent = '0% (0)';
+                
+                document.getElementById('yesBar').style.width = '0%';
+                document.getElementById('noBar').style.width = '0%';
+                document.getElementById('abstainBar').style.width = '0%';
+            }
+            
+            document.getElementById('totalVotes').textContent = total;
+        }
+
+        // Генерация протокола голосования
+        function generateProtocol() {
+            if (!currentPoll) return;
+            
+            const question = currentPoll.question;
+            const data = votesData[question];
+            const total = data.yes + data.no + data.abstain;
+            const now = new Date();
+            const day = now.getDate();
+            const monthNames = ["января", "февраля", "марта", "апреля", "мая", "июня",
+                              "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+            const month = monthNames[now.getMonth()];
+            const year = now.getFullYear();
+            
+            // Определяем решение на основе результатов голосования
+            let decision;
+            if (data.yes > data.no + data.abstain) {
+                decision = `Принято решение (${data.yes} голосов "за"): Утвердить предложение по вопросу повестки дня.`;
+            } else {
+                decision = `Решение не принято (требуется большинство голосов).`;
+            }
+            
+            // Сохраняем данные протокола для скачивания
+            currentProtocolData = {
+                question: question,
+                decision: decision,
+                data: data,
+                date: `${day} ${month} ${year} года`
+            };
+            
+            // Генерируем HTML протокола
+            const protocolContent = document.getElementById('protocolContent');
+            protocolContent.innerHTML = `
+                <div class="protocol-title">ПРОТОКОЛ №${data.pollId}</div>
+                
+10                <div class="protocol-section">
+                    <div class="protocol-section-title">заочного голосования членов ТНС Энерго</div>
+                </div>
+                
+                <div class="protocol-section">
+                    <div class="protocol-text">
+                        Дата и время окончания приема бюллетеней заочного голосования: 
+                        «${day}» ${month} ${year} года, ${now.getHours()}:00 часов по московскому времени.
+                    </div>
+                    
+                    <div class="protocol-text">
+                        Место подведения итогов заочного голосования: г. Москва.
+                    </div>
+                    
+                    <div class="protocol-text">
+                        Форма проведения: заочное голосование.
+                    </div>
+                    
+                    <div class="protocol-text">
+                        Дата составления протокола: «${day}» ${month} ${year} года.
+                    </div>
+                    
+                    <div class="protocol-text">
+                        Кворум для принятия решений по вопросам повестки дня имеется.
+                    </div>
+                </div>
+                
+                <div class="protocol-section">
+                    <div class="protocol-section-title">ПОВЕСТКА ДНЯ:</div>
+                    <div class="protocol-text">
+                        1. ${question}
+                    </div>
+                </div>
+                
+                <div class="protocol-section">
+                    <div class="protocol-section-title">РЕЗУЛЬТАТЫ ГОЛОСОВАНИЯ:</div>
+                    <div class="protocol-text">
+                        Приняли участие в голосовании: ${total} член(а) ТНС Энерго
+                    </div>
+                    <div class="protocol-text">
+                        Голосовали:
+                    </div>
+                    <div class="protocol-text">
+                        «За» — ${data.yes}
+                    </div>
+                    <div class="protocol-text">
+                        «Против» — ${data.no}
+                    </div>
+                    <div class="protocol-text">
+                        «Воздержались» — ${data.abstain}
+                    </div>
+                </div>
+                
+                <div class="protocol-section">
+                    <div class="protocol-section-title">РЕШЕНИЕ:</div>
+                    <div class="protocol-text">
+                        По вопросу 1 повестки дня:
+                    </div>
+                    <div class="protocol-text">
+                        ${decision}
+                    </div>
+                </div>
+                
+                <div class="protocol-signature">
+                    <div class="protocol-text">
+                        Председатель ТНС Энерго
+                    </div>
+                    <div class="protocol-signature-line">
+                        <span class="protocol-signature-name">(Ф.И.О.)</span>
+                    </div>
+                </div>
+                
+                <div class="protocol-signature">
+                    <div class="protocol-text">
+                        Секретарь собрания
+                    </div>
+                    <div class="protocol-signature-line">
+                        <span class="protocol-signature-name">(Ф.И.О.)</span>
+                    </div>
+                </div>
+            `;
+            
+            openProtocolModal();
+        }
+
+        // Скачивание протокола в PDF
+        function downloadProtocol() {
+            if (!currentProtocolData) return;
+            
+            const element = document.getElementById('protocolContent');
+            const opt = {
+                margin: [10, 15, 10, 15],
+                filename: `Протокол_голосования_${currentProtocolData.question.substring(0, 20)}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 3,
+                    dpi: 300,
+                    letterRendering: true,
+                    useCORS: true,
+                    scrollX: 0,
+                    scrollY: 0,
+                    windowWidth: 1920
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait'
+                }
+            };
+            
+            html2pdf().set(opt).from(element).save();
+        }
+
+        // Закрытие модальных окон при клике вне их
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('pollModal')) {
+                closePollModal();
+            }
+            if (event.target == document.getElementById('voteModal')) {
+                closeVoteModal();
+            }
+            if (event.target == document.getElementById('protocolModal')) {
+                closeProtocolModal();
+            }
+        });
+
+        // Инициализация обработчиков для существующих опросов
+        function initPollClickHandlers() {
+            const polls = document.querySelectorAll('.document-container');
+            polls.forEach(poll => {
+                const question = poll.querySelector('.document-content').textContent.replace(/^\d+\.\s/, '');
+                const author = poll.querySelector('.document-author').textContent;
+                const description = poll.querySelector('.poll-description').textContent;
+                
+                poll.addEventListener('click', function() {
+                    openVoteModal(this, question, author, description);
+                });
+            });
+        }
+        
+        // Инициализируем обработчики после загрузки DOM
+        document.addEventListener('DOMContentLoaded', function() {
+            initPollData();
+            initPollClickHandlers();
+        });
+    </script>
+</body>
+</html>
