@@ -61,8 +61,11 @@
             overflow-y: scroll;
             overflow-x: hidden;
             transition: all 0.5s ease-in-out;
+            display: none;
         }
-
+        #nav.open {
+            display: flex;
+        }
         .navcontainer::-webkit-scrollbar {
             display: none;
         }
@@ -644,6 +647,37 @@
         .protocol-btn:hover {
             background-color: #2a4a8a;
         }
+        @media (min-width:768px){
+        .toggle-btn{
+                display:none ;
+            }}
+
+        .toggle-btn:hover {
+            background-color: #3e8bbe; /* Цвет фона при наведении */
+        }
+        @media (max-width: 768px) {
+            .nav {
+                width: 200px; /* Уменьшаем ширину панели для мобильных */
+            }
+            
+            .nav {
+                width: 200px; /* Уменьшаем ширину навигации на мобильных */
+                font-size: 18px;
+            }
+
+            
+            .toggle-btn {
+ /* Позиционирование кнопки */
+                top: 20px; /* Отступ сверху */
+                left: 20px; /* Отступ слева */
+                background-color: #1a315e; /* Цвет фона кнопки */
+                color: white; /* Цвет текста кнопки */
+                border: none; /* Убираем рамку */
+                padding: 10px; /* Отступы внутри кнопки */
+                cursor: pointer; /* Указатель при наведении */
+                z-index: 1100; /* Выше панели навигации */
+            }
+        }
     </style>
     <!-- Подключаем иконки Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -657,13 +691,13 @@
         <div class="message">
             <div class="circle"></div>
             <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png" class="icn" alt="">
-            <div class="dp">
-                <img src="https://media.geeksforgeeks.org/wp-content/uploads/20221210180014/profile-removebg-preview.png" class="dpicn" alt="dp">
-            </div>
+            <button class="toggle-btn" onclick="toggleNav()">☰</button>
+
         </div>
     </header>
     <div class="main-container">
-        <div class="navcontainer">  
+
+        <div class="navcontainer" id="nav">  
             <nav class="nav">
                 <div class="nav-upper-options">
                     <div class="nav-option option1">              
@@ -1463,6 +1497,34 @@
             initPollData();
             initPollClickHandlers();
         });
+
+
+        const nav = document.getElementById('nav');
+
+            // Функция для открытия панели навигации
+            function openNav() {
+                nav.classList.add('open');
+            }
+
+            // Функция для закрытия панели навигации
+            function closeNav() {
+                nav.classList.remove('open');
+            }
+
+            // Обработчик события для кнопки
+            function toggleNav() {
+                nav.classList.toggle('open'); // Переключаем класс 'open'
+            }
+
+            document.addEventListener('mousemove', (event) => {
+                if (window.innerWidth > 768) { // Проверяем, что это не мобильное устройство
+                    if (event.clientX < 250) { // Если курсор близко к левому краю
+                        openNav(); // Открываем панель
+                    } else {
+                        closeNav(); // Закрываем панель
+                    }
+                }
+            });
     </script>
 </body>
 </html>
